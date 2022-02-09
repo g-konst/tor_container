@@ -1,7 +1,8 @@
 FROM alpine:3.13.2
+LABEL org.opencontainers.image.source https://github.com/g-konst/tor_container
 
 RUN apk add --no-cache tor \
- && echo -e "SocksPort 0.0.0.0:9050\nHTTPTunnelPort 0.0.0.0:9080" >> /etc/tor/torrc \
+ && echo "SocksPort 0.0.0.0:9050" >> /etc/tor/torrc \
  && chown -R tor /etc/tor
 
 USER tor
